@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace HipChatConversations.Controllers
+namespace HipChatConversations.Support
 {
 	public class AutoHyperlink 
 	{

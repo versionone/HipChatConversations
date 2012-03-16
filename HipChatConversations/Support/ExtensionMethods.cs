@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HipChatConversations.Controllers
+namespace HipChatConversations.Support
 {
 	public static class ExtensionMethods
 	{

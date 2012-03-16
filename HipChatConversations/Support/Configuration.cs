@@ -1,7 +1,7 @@
 using System.Configuration;
 using HipChat;
 
-namespace HipChatConversations.Controllers
+namespace HipChatConversations.Support
 {
 	public class Configuration
 	{

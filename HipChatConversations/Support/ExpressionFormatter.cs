@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using System.Text;
+using HipChatConversations.Controllers;
 using HipChatConversations.Models;
 
-namespace HipChatConversations.Controllers
+namespace HipChatConversations.Support
 {
 	public class ExpressionFormatter
 	{
