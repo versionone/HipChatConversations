@@ -30,14 +30,18 @@ namespace HipChatConversations.Controllers
 			if (!room.IsBlank())
 			{
 				int roomId;
-				if (int.TryParse(room, out roomId))
-				{
-					HipChatRoomId = roomId;
-				}
+				if (int.TryParse(room, out roomId)) HipChatRoomId = roomId;
 			}
 
 			var color = ConfigurationManager.AppSettings["BackgroundColor"];
 			if (!color.IsBlank()) BackgroundColor = ConvertToHipChatColor(color);
+
+			var notify = ConfigurationManager.AppSettings["Notify"];
+			if (!notify.IsBlank())
+			{
+				bool notifyRoom;
+				if (bool.TryParse(notify, out notifyRoom)) Notify = notifyRoom;
+			}
 		}
 
 		private HipChatClient.BackgroundColor ConvertToHipChatColor(string color)
