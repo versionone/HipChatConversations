@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using HipChat;
+using HipChatConversations.Models;
 
 namespace HipChatConversations.Controllers
 {
-
-	public class Expression
+	public class ExpressionController : Controller
 	{
-		public string AuthorName { get; set; }
-		public string Content { get; set; }
-		public bool IsNewlyCreated { get; set; }
-	}
+		private Configuration _config;
 
-    public class ExpressionController : Controller
-    {
-        public ActionResult Changed(Expression expression)
+		public Configuration Config
+		{
+			get { return _config = _config ?? new Configuration(); }
+		}
+
+		[HttpPost]
+		public ActionResult Changed(Expression expression)
 		{
 			if (expression.IsNewlyCreated)
 			{
-				var token = "XXX";
-				var room = 0;
-				var client = new HipChat.HipChatClient(token, room);
-				client.SendMessage(expression.Content, expression.AuthorName, HipChatClient.BackgroundColor.red);
+				var client = new HipChat.HipChatClient(Config.HipChatApiToken, Config.HipChatRoomId);
+				client.SendMessage(expression.Content, expression.AuthorName, Config.Notify, Config.BackgroundColor);
 			}
 
 			return new EmptyResult();
 		}
 
-    }
+		[HttpGet]
+		public ActionResult Test()
+		{
+			return View();
+		}
+	}
 }
