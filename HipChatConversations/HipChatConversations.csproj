@@ -77,13 +77,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AutoHyperlink.cs" />
     <Compile Include="Controllers\Configuration.cs" />
     <Compile Include="Controllers\ExpressionController.cs" />
+    <Compile Include="Controllers\ExpressionFormatter.cs" />
     <Compile Include="Controllers\ExtensionMethods.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Expression.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MentionedAsset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
