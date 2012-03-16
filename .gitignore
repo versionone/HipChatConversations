@@ -4,3 +4,4 @@ _ReSharper.HipChatConversations/
 *.suo
 deploy/
 *.publish.xml
+*.csproj.user
