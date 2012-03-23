@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using HipChatConversations.Controllers;
 using HipChatConversations.Models;
 
@@ -18,7 +19,10 @@ namespace HipChatConversations.Support
 		public string Format(Expression expression)
 		{
 			var builder = new StringBuilder();
-			builder.Append(_hyperlinker.Transform(expression.Content));
+
+			var hyperlinked = _hyperlinker.Transform(expression.Content);
+			var newLined = new Regex("(\r\n)|(\n)").Replace(hyperlinked, "<br/>");
+			builder.Append(newLined);
 
 			builder.AppendFormat(" - <a href='{1}/conversations.v1/show?id={0}'>View Conversation</a>", expression.Id, _config.V1BaseUrl);
 
