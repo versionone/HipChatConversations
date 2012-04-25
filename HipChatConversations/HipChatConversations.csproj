@@ -80,7 +80,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Expression.cs" />
-    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\MentionedAsset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\AutoHyperlink.cs" />
