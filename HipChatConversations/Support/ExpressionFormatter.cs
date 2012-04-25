@@ -1,6 +1,7 @@
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using HipChatConversations.Controllers;
+using System.Web;
 using HipChatConversations.Models;
 
 namespace HipChatConversations.Support
@@ -24,17 +25,21 @@ namespace HipChatConversations.Support
 			var newLined = new Regex("(\r\n)|(\n)").Replace(hyperlinked, "<br/>");
 			builder.Append(newLined);
 
-			builder.AppendFormat(" - <a href='{1}/conversations.v1/show?id={0}'>View Conversation</a>", expression.Id, _config.V1BaseUrl);
+			builder.AppendFormat(" - <a href='{1}/conversations.v1/show?id={0}'>View Conversation</a>", expression.Id, HttpUtility.HtmlAttributeEncode(_config.V1BaseUrl));
 
 			if (expression.MentionedAssets != null)
 			{
 				builder.Append(" - ");
-				expression.MentionedAssets.ForEach(
-					e => builder.AppendFormat(e.Number.IsBlank() ? "{0}, " : "{0} ({1}), ", e.Name, e.Number));
-				builder.Remove(builder.Length - 2, 2);
+				builder.Append(string.Join(", ", expression.MentionedAssets.Select(FormatMentionedAsset)));
 			}
 
 			return builder.ToString();
+		}
+		
+		private string FormatMentionedAsset(MentionedAsset mentioned)
+		{
+			var text = string.Format(mentioned.Number.IsBlank() ? "{0}" : "{0} ({1})", HttpUtility.HtmlEncode(mentioned.Name), mentioned.Number);
+			return mentioned.Id.IsBlank() ? text : string.Format("<a href='{2}/assetdetail.v1?oid={0}'>{1}</a>", mentioned.Id, text, HttpUtility.HtmlAttributeEncode(_config.V1BaseUrl));
 		}
 	}
 }
