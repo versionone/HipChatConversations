@@ -5,3 +5,5 @@ _ReSharper.HipChatConversations/
 deploy/
 *.publish.xml
 *.csproj.user
+
+/HipChatConversations/user.config
