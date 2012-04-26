@@ -1,3 +1,7 @@
+#[submodule "lib/HipChat.net"]
+#	path = lib/HipChat.net
+#	url = https://github.com/hugorodgerbrown/HipChat.net.git
+
 [submodule "lib/HipChat.net"]
 	path = lib/HipChat.net
-	url = https://github.com/hugorodgerbrown/HipChat.net.git
+	url = https://github.com/versionone/HipChat.net.git
