@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 using HipChat;
 
@@ -21,7 +22,6 @@ namespace HipChatConversations.Support
 
 			ReadFromConfig();
 		}
-
 
 		private void ReadFromConfig()
 		{
@@ -51,22 +51,8 @@ namespace HipChatConversations.Support
 
 		private HipChatClient.BackgroundColor ConvertToHipChatColor(string color)
 		{
-			switch (color.ToLower())
-			{
-				case "red":
-					return HipChatClient.BackgroundColor.red;
-				case "green":
-					return HipChatClient.BackgroundColor.green;
-				case "yellow":
-					return HipChatClient.BackgroundColor.yellow;
-				case "purple":
-					return HipChatClient.BackgroundColor.purple;
-				case "random":
-				default:
-					return HipChatClient.BackgroundColor.random;
-			}
+			HipChatClient.BackgroundColor result;
+			return Enum.TryParse(color, true, out result) ? result : HipChatClient.BackgroundColor.random;
 		}
-
-	
 	}
 }
