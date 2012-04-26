@@ -21,7 +21,7 @@ namespace HipChatConversations.Support
 		{
 			var builder = new StringBuilder();
 
-			var hyperlinked = _hyperlinker.Transform(expression.Content);
+			var hyperlinked = _hyperlinker.DoIt(expression.Content);
 			var newLined = new Regex("(\r\n)|(\n)").Replace(hyperlinked, "<br/>");
 			builder.Append(newLined);
 
