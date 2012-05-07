@@ -1,4 +1,6 @@
-# Overview
+# HipChatConversations
+
+## Overview
 HipChatConversations is an example application that integrates VersionOne Conversations with HipChat.
 
 ## What is VersionOne Conversations?
@@ -17,17 +19,17 @@ However easy it is to use, its not where our main team communication happens. An
 1) Request an API key from HipChat, and create a room
 1) Create a user.config file that looks like this:
 `
-<appSettings>
-	<add key="HipChatApiToken" value="XXX" />
-	<add key="HipChatRoomId" value="000" />
-	<add key="V1BaseUrl" value="https://your.hosted/instance" />
-</appSettings>
+    <appSettings>
+    	<add key="HipChatApiToken" value="XXX" />
+    	<add key="HipChatRoomId" value="000" />
+    	<add key="V1BaseUrl" value="https://your.hosted/instance" />
+    </appSettings>
 `
 1) Deploy the website to a location that can be reached by VersionOne
 1) Create or edit your user.config in VersionOne and add that url:
 `
-<appSettings>
-	<add key="ExpressionChangedWebHookUrl" value="http://your.server/HipChatConversations/Expression/Changed" /> 
-</appSettings>
+    <appSettings>
+    	<add key="ExpressionChangedWebHookUrl" value="http://your.server/HipChatConversations/Expression/Changed" /> 
+    </appSettings>
 `
 1) Test it by visiting http://your.server/HipChatConversations/Expression/Test
