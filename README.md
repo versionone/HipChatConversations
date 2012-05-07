@@ -15,9 +15,9 @@ We find that using Conversations is an extremely effective tool for creating and
 However easy it is to use, its not where our main team communication happens. And even though we get email notifications, many of us rarely check email. So if someone had a question, we were often doubling up our messages so that we capture the thought as well as get a prompt response. By integrating Conversations with HipChat we can both get notified instantly where our main communication is happening, as well as preserve that communication in VersionOne that is easily referenced in the future.
 
 ## How to do
-1) Clone it
-1) Request an API key from HipChat, and create a room
-1) Create a user.config file that looks like this:
+1. Clone it
+1. Request an API key from HipChat, and create a room
+1. Create a user.config file that looks like this:
 `
     <appSettings>
     	<add key="HipChatApiToken" value="XXX" />
@@ -25,11 +25,11 @@ However easy it is to use, its not where our main team communication happens. An
     	<add key="V1BaseUrl" value="https://your.hosted/instance" />
     </appSettings>
 `
-1) Deploy the website to a location that can be reached by VersionOne
-1) Create or edit your user.config in VersionOne and add that url:
+1. Deploy the website to a location that can be reached by VersionOne
+1. Create or edit your user.config in VersionOne and add that url:
 `
     <appSettings>
     	<add key="ExpressionChangedWebHookUrl" value="http://your.server/HipChatConversations/Expression/Changed" /> 
     </appSettings>
 `
-1) Test it by visiting http://your.server/HipChatConversations/Expression/Test
+1. Test it by visiting http://your.server/HipChatConversations/Expression/Test
